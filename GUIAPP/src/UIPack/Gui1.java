@@ -3,6 +3,16 @@ package UIPack;
 import javax.swing.*;
 import java.awt.*;
 
+
+/*TODO : 
+1.  Make the screen not resizable.
+2.  Insert the logo in  imglogo 
+3. Change the userName into a variable
+
+
+*/
+
+
 public class Gui1 extends JFrame{
   private JLabel lblLogo, lblWelcome;
   private ImageIcon imglogo;
@@ -11,10 +21,16 @@ public class Gui1 extends JFrame{
 
   public Gui1(){
     setTitle("First Page");
-    setSize(1920,1080); // full size for 1080p
-    imglogo = new ImageIcon(getClass().getResource(""));
+    setSize(1280,720);  // full size for 720p
+
+
+// TODO  #2 : insert the file dir in this ""
+    imglogo = new ImageIcon(getClass().getResource("")); 
     lblLogo = new JLabel(imglogo);
+    
+    //TODO :  #3 Change the UserName! into  a global variable -> if the user login then change the "name"
     lblWelcome = new JLabel("Welcome UserName!");
+
     // btnMypage = new JButton("My Page");
     btnMypage = new JButton("My Page") {
         {
@@ -22,11 +38,12 @@ public class Gui1 extends JFrame{
             setMaximumSize(getSize());
         }
     };
+
     btnShopcart = new JButton("Shopping cart");
     btnCustomer = new JButton("Customer Service");
 
     p1 = new JPanel();
-    p1.setBounds(20,20,150,150);
+    p1.setBounds(0,0,150,80);
     p1.setBackground(Color.RED);
     p1.add(lblLogo);
 

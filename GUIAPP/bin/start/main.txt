@@ -1,0 +1,21 @@
+this file is for the scenarios.
+
+ The app starts with The mainpage : src/UIPack/Mainpage
+
+
+    switch (user action) 
+    
+    userAction = Click product image 
+                        go to page product introduction
+
+    userAction = Click sidebar
+                        change the products regarding the clicked label. This
+
+    userAction = Click search button
+                        search the product using the keyword(use the hashmap)    
+
+    userAction = Click MyPage/ShoppingCart/CustomerService
+                        go to page Mypage/ShoppingCart/CustomerService
+
+
+
