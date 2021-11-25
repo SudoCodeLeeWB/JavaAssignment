@@ -1,5 +1,8 @@
+package start;
+//main page for  executing the program
+
 import javax.swing.*;
-import UI.Gui1;
+import UIPack.Gui1;
 import java.awt.*;
 
 public class Main extends JFrame{
