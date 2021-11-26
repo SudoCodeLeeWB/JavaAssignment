@@ -1,9 +1,9 @@
 package UIPack;
 
-public class MainPage extends Gui1{
+public class MainPage extends Gui1 {
+    
+    
 
 
 
-
-  
 }

@@ -2,12 +2,12 @@ package start;
 //main page for  executing the program
 
 import javax.swing.*;
-import UIPack.Gui1;
+import UIPack.*;
 import java.awt.*;
 
-public class Main extends JFrame{
+public class Main {
 	public static void main(String[] args) {
-		Gui1 gp4 = new Gui1();
+		ProductIntro gp4 = new ProductIntro();
 		gp4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gp4.setVisible(true);
 	}
