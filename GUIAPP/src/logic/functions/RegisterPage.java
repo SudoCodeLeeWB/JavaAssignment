@@ -60,13 +60,18 @@ public class RegisterPage extends JFrame implements ActionListener {
 			boolean found = false;
 			try {
 				Scanner scan = new Scanner(file);
-				while(scan.hasNextLine());
+				while(scan.hasNextLine()) {
 				username = scan.nextLine();
-				if (username.startsWith(username));
+				if (username.startsWith(username)) {
 				int reply = JOptionPane.showConfirmDialog(null, "Username Taken", "Alert", JOptionPane.OK_OPTION);
 				if (reply == 0)
 				txtUser.setText("");
 				txtPass.setText("");
+				}
+				else {
+					
+				}
+				}
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				System.out.println("File not Found!");
