@@ -1,2 +1,0 @@
-// This interface package includes the interface class used to indicate the usage of the functions. 
-// the methods will be overridden by the java files inside of the functions file. 

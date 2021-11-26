@@ -18,4 +18,5 @@ this file is for the scenarios.
                         go to page Mypage/ShoppingCart/CustomerService
 
 
-
+ The user selects the product and adds the product inside the shopping cart. 
+ Then the user checkouts. 

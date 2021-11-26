@@ -1,0 +1,26 @@
+// This interface package includes the interface class used to indicate the usage of the functions. 
+// the methods will be overridden by the java files inside of the functions file. 
+
+
+ functions we need to make:
+
+  1. admin login / logout function. 
+    a. need to add the button for logout - conditional // if user not login then not visable. 
+    b. need to make a static arrayList<> to store the list of ID and Password. , the admin's first account is preset. 
+    c. need to make a register function to add a new user data inside of the Account Arraylist.
+
+2. Product related functions.  - what data structure we are going to use?
+    1. the user can find a product using the keyword.  - will use a hashmap. 
+    2. the admin can add/delete/edit a product. 
+    3. the product structure : we are going to make a class for the product and add it into the arrayList. 
+
+3. The user can view the product in the main page. 
+    the buttons will be included in the panel #5 and will use the layout setting for buttons. 
+    These buttons will show the image of the product. 
+
+4. The owner can view the Orders. 
+    we need a Queue data structure to store the Orders. 
+    define the Queue as Static .
+
+
+
