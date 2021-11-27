@@ -7,20 +7,9 @@ public class User {
     // User has userName , Address , Payment method.
 
 
-    public String userName , id , password , paymentMethod ;
-    public  ShoppingCart cart;
-    public int userCode;
-    public static int StaticUserCode =1000;
+    public String userName , id , password ;
+    public  ShoppingCart cart; 
 
-
-    // generating the user code. 
-    public int setUserCode(){
-
-        int number = StaticUserCode;
-        StaticUserCode ++;
-        return number;  
-
-    };
 
     public void setCart(){
         this. cart = new ShoppingCart();
@@ -30,7 +19,6 @@ public class User {
     // constructor -> called when adding a new user. 
     public User(String userName , String id ,  String password ){
 
-        userCode = setUserCode();
         this.userName = userName;
         this.id = id;
         this.password = password;

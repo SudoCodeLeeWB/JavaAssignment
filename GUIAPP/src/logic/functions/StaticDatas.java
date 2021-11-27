@@ -11,7 +11,6 @@ import java.util.Scanner;
 public class StaticDatas {
 
 
- 
     // account related Arraylist
     static ArrayList<User> users = new ArrayList<User>();
 
@@ -57,10 +56,6 @@ public  static void  restoreUser(){
             }
             myReader.close();
 
-             // for debug:
-             for (int k =0; k < users.size(); k++){
-             System.out.println(users.get(k));
-            }
 
           } catch (FileNotFoundException e) {
             System.out.println("An error occurred, File does not exits. ");
@@ -71,19 +66,83 @@ public  static void  restoreUser(){
     
 public void  restoreProduct(){
 
+}
 
+// called when exit app
+public static void  saveUser (){
+
+    FileWriter myWriter;
+    try {
+        myWriter = new FileWriter("lib/Users.txt"); 
+
+        for (int i = 0;  i < users.size() ; i++){
+            String name = users.get(i).userName;
+            System.out.println(name);
+            String iD = users.get(i).id;
+            System.out.println(iD);
+            String pwd = users.get(i).password;
+            System.out.println(pwd);
+            
+                myWriter.write(name);
+                myWriter.write(System.getProperty( "line.separator" ));
+                myWriter.write(iD);
+                myWriter.write(System.getProperty( "line.separator" ));
+                myWriter.write(pwd);
+                myWriter.write(System.getProperty( "line.separator" ));
+    
+                System.out.println("User Status recorded");
+        }
+
+            // for debug:
+            for (int k =0; k < users.size(); k++){
+            System.out.println(users.get(k));
+            }
+
+        myWriter.close();
+    }
+
+                 catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+               
+}
+
+public void  saveProduct(){}
+
+
+
+// called when registering a new user / adding new prduct
+// returns the boolean value to indicate the success or failure of the registration. 
+public static boolean addUser( String userName, String id, String password ){
+
+// first, check whether the same user already exists.
+for (int i = 0;  i < users.size() ; i++){
+    if (userName == users.get(i).userName)
+    return false;
+}
+//second make a new user Class and insert it at the end of the array.
+    User newUser = new User(userName, id, password);
+
+    // .add reutrns if the adding was successful.
+    return users.add(newUser);
 
 }
 
 
-// called when exit app
-public void  saveUser(){}
-public void  saveProduct(){}
+public boolean addProduct(){
 
 
-// called when registering a new user / adding new prduct
-public void addUser(){}
-public void addProduct(){}    
+    return true;
+}    
 
+public static boolean login(String id ,String password){
+
+    for (int i = 0;  i < users.size() ; i++){
+        if( (users.get(i).id .equals(id)) && (users.get(i).password.equals(password))){
+            return true;
+        }
+    }
+ return false;
+}
 
 }

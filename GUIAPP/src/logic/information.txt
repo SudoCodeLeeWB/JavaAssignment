@@ -12,7 +12,7 @@
 
 
 2. Product related functions.  - what data structure we are going to use?
-    1. the user can find a product using the keyword.  - will use a hashmap. 
+    1. the user can find a product using the keyword.  
     2. the admin can add/delete/edit a product. 
     3. the product structure : we are going to make a class for the product and add it into the arrayList. 
 
