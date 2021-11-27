@@ -12,10 +12,10 @@ public class StaticDatas {
 
 
     // account related Arraylist
-    static ArrayList<User> users = new ArrayList<User>();
+    public static ArrayList<User> users = new ArrayList<User>();
 
     // product related ArrayList
-    static ArrayList<Product> products  = new ArrayList<Product>();
+   public static ArrayList<Product> products  = new ArrayList<Product>();
 
     //OrderStack for the Owner to view. 
 
@@ -63,8 +63,59 @@ public  static void  restoreUser(){
           }
 
     }
-    
-public void  restoreProduct(){
+
+public static void  restoreProduct(){
+
+    int i =1;
+    String productName ="" , keyword1 =""  , keyword2 ="" ;
+    int productPrice =0;
+    String imageName ="";
+
+    try {
+        File myObj = new File("lib/Products.txt");
+        Scanner myReader = new Scanner(myObj); 
+
+        while (myReader.hasNextLine()) {
+            // the product must have three keywords.
+
+                switch (i){
+
+                    case 1:
+                     productName = myReader.nextLine();
+                    i++;
+                    break;
+
+                    case 2:
+                     productPrice = Integer.parseInt(myReader.nextLine());
+                    i++;
+                    break;
+                    
+                    case 3:
+                     imageName = myReader.nextLine();
+                    i++;
+                    break;
+
+                     case 4:
+                      keyword1 = myReader.nextLine();
+                     i++;
+                     break;
+  
+                    case 5:
+                     keyword2 = myReader.nextLine();
+                     Product newProduct = new Product(productName,keyword1,keyword2 , productPrice , imageName);
+                     products.add(newProduct);
+                     i =1;
+                     break;
+
+                        default: break;
+                }
+        }
+        myReader.close();
+
+      } catch (FileNotFoundException e) {
+        System.out.println("An error occurred, File does not exits. ");
+        e.printStackTrace();
+      }
 
 }
 
@@ -108,7 +159,6 @@ public static void  saveUser (){
 }
 
 public void  saveProduct(){}
-
 
 
 // called when registering a new user / adding new prduct

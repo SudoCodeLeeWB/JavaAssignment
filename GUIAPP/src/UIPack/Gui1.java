@@ -13,18 +13,18 @@ import java.awt.event.*;
 
 
 public class Gui1 extends JFrame implements ActionListener  {
-  private JLabel lblLogo, lblWelcome, lblMyPage, lblShopCart, lblCustomer;
-  private ImageIcon imglogo;
+  protected JLabel lblLogo, lblWelcome, lblMyPage, lblShopCart, lblCustomer;
+  protected ImageIcon imglogo;
   // These buttons are not used -> chane it later?
-  // private JButton btnMypage, btnShopcart, btnCustomer;
-  private JPanel p1,p2,p3,p4;
+  // protected JButton btnMypage, btnShopcart, btnCustomer;
+  protected JPanel p1,p2,p3,p4;
 
   // for pannel #3
-private JButton btnSide1 , btnSide2 , btnSide3 , btnSide4 ,btnSide5 ;
+public JButton btnSide1 , btnSide2 , btnSide3 , btnSide4 ,btnSide5 ;
 
 // for search box - pannel #4
-private JTextField searchBox;
-private JButton btnSearch;
+protected JTextField searchBox;
+protected JButton btnSearch;
 
 
 // write the events and actions . 
@@ -123,6 +123,16 @@ public void actionPerformed(ActionEvent e){
     p5.setBounds(180,180,1700,800);
     p5.setBackground(Color.pink);
     */
+
+
+// for action listener
+btnSide1.addActionListener(this);
+btnSide2.addActionListener(this);
+btnSide3.addActionListener(this);
+btnSide4.addActionListener(this);
+btnSide5.addActionListener(this);
+btnSearch.addActionListener(this);
+
 
 
     // adding pannel inside of the JFrame

@@ -10,6 +10,7 @@ public class Main {
 	public static void main(String[] args) {
 		// getting user information from txt file
 		StaticDatas.restoreUser();
+		StaticDatas.restoreProduct();
 		loginPage a = new loginPage();
 		//saving user information in txt file
 		

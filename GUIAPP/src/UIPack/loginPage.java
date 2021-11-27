@@ -1,9 +1,7 @@
 package UIPack;
 
 import javax.swing.*;
-
 import logic.functions.StaticDatas;
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -64,7 +62,6 @@ public void actionPerformed(ActionEvent e){
         
          if(  StaticDatas.login(txtId.getText() , txtPwd.getText()) == true){
             int reply = JOptionPane.showConfirmDialog(null, "Login Successful", "Alert", JOptionPane.OK_OPTION);
-             
             MainPage p1 = new MainPage();
             p1.setVisible(true);
             this.setVisible(false);

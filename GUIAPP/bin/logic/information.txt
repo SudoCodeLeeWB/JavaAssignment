@@ -28,3 +28,9 @@
 
 
 
+what to do from now:
+1. how to upload the image into the program while execuitng . 
+2. layout overall UI
+3.Ui - the side menu -> connecting UI
+4. the product information part. 
+
