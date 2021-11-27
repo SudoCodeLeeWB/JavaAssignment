@@ -1,9 +1,13 @@
 package UIPack;
 
 import javax.swing.*;
-import java.awt.*;
 
-public class loginPage extends Gui1{
+
+import java.awt.*;
+import java.awt.event.*;
+
+
+public class loginPage extends Gui1  {
 
     private JPanel p5;
     private JButton  login ,register;
@@ -37,6 +41,11 @@ public class loginPage extends Gui1{
      }
     
 
+
+public void actionPerformed(ActionEvent e){  
+ 
+
+}
 
 
   

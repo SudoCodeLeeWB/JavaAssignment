@@ -1,6 +1,8 @@
 package UIPack;
 import javax.swing.*;
+
 import java.awt.*;
+import java.awt.event.*;  
 
 /*TODO : 
  adjust the location of search box in pannel  #4 
@@ -10,7 +12,7 @@ import java.awt.*;
 */
 
 
-public class Gui1 extends JFrame{
+public class Gui1 extends JFrame implements ActionListener  {
   private JLabel lblLogo, lblWelcome, lblMyPage, lblShopCart, lblCustomer;
   private ImageIcon imglogo;
   // These buttons are not used -> chane it later?
@@ -23,6 +25,12 @@ private JButton btnSide1 , btnSide2 , btnSide3 , btnSide4 ,btnSide5 ;
 // for search box - pannel #4
 private JTextField searchBox;
 private JButton btnSearch;
+
+
+// write the events and actions . 
+public void actionPerformed(ActionEvent e){  
+ 
+}  
 
 
 

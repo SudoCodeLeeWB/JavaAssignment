@@ -8,11 +8,15 @@ public class Order {
     public  char size;
     
 
-// Constructor called when the user clicks the add to shopping cart button / or buy now button
-public  Order(Product prod, int quantity, char size) {
+    // Constructor called when the user clicks the add to shopping cart button / or buy now button
+    public  Order(Product prod, int quantity, char size) {
+
+        this.prod = prod;
+        this.quantity = quantity;
+        this.size = size;
+
+    }
     
-    this.prod = prod;
-    this.quantity = quantity;
-    this.size = size;
+
 
 }

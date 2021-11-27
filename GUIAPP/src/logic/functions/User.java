@@ -34,6 +34,8 @@ public class User {
         this.userName = userName;
         this.id = id;
         this.password = password;
+        // debug - show the user information. 
+        System.out.println(userName + "  " + id + " " + password);
 
     }
 

@@ -4,12 +4,17 @@ package start;
 import javax.swing.*;
 import UIPack.*;
 import java.awt.*;
+import logic.functions.StaticDatas;
 
 public class Main {
 	public static void main(String[] args) {
+		 StaticDatas.restoreUser();
+
+		/*
 		ProductIntro gp4 = new ProductIntro();
 		gp4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gp4.setVisible(true);
+		*/
 	}
 }
 
