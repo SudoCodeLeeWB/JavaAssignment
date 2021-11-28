@@ -67,7 +67,7 @@ public MainPage() {
     }
     
         if( btnSearch.equals(e.getSource())) {
-            System.out.println("The button is clicked");
+            System.out.println("The search button is clicked");
         
           // look for the products that has the same string from the box -> compare it with the keywoard
           // get the elements from the product array . 
@@ -91,7 +91,6 @@ public MainPage() {
             // remake the pannel
             buttons.clear();
             p5.removeAll(); // clear the panel
-
             p5.setLayout(new GridLayout(2  , StaticDatas.searchResults.size() /2 ));
 
             System.out.println(StaticDatas.searchResults.size() + "The size of the search results \n");
@@ -101,12 +100,17 @@ public MainPage() {
                  //set the button's name to product's names.
                  buttons.add(i,new JButton());
                  buttons.get(i).setText(StaticDatas.searchResults.get(i).productName);
+                 buttons.get(i).addActionListener(this);
                  p5.add(buttons.get(i));
          
              }
              // redraw the pannel
              p5.revalidate();
              p5.repaint();
+
+             System.out.println(buttons.size() + "The size of the refreshed buttons array \n");
+
+
         } 
     
         
@@ -130,3 +134,4 @@ public MainPage() {
 }
 
 }
+

@@ -9,15 +9,27 @@ import java.awt.event.*;
 public class ProductIntro extends Gui1{
 
 private JPanel p5 ,p6;
-private JButton btnAddCart , btnBuyNow;
+private JButton btnAddCart , btnBuyNow, btnGoBack;
 private JLabel pName , pPrice , pQuantity ,image ; 
-private JLabel aName , aPrice , aQuantity;
+private JLabel aName , aPrice ;
 private ImageIcon  bigImage;
 private int price;
+private JTextField quant;
   
 //resize the product image
 
     public ProductIntro(String selectedProductName){
+
+
+        btnSide1.setVisible(false);
+        btnSide2.setVisible(false);
+        btnSide3.setVisible(false);
+        btnSide4.setVisible(false);
+        btnSide5.setVisible(false);
+        searchBox.setVisible(false);
+        btnSearch.setVisible(false);
+
+
     
         // get the product from the 
         Product selectedProduct = StaticDatas.productQuery(selectedProductName);
@@ -40,6 +52,7 @@ private int price;
 
          btnAddCart = new JButton("ADD CART");
          btnBuyNow = new JButton("Buy now");
+         btnGoBack = new JButton("Go back");
 
          pName  = new JLabel("Product Name");
          pPrice  = new   JLabel("Product Price");
@@ -50,19 +63,21 @@ private int price;
          aName  = new JLabel("Product Name");
          String name="";
          name = selectedProduct.productName;
-         aName.setText(name);
+         aName.setText(name );
+
          System.out.println(name + "The name value \n");
-         aPrice  = new   JLabel("Product Price");
+         aPrice  = new  JLabel("Product Price");
          price = selectedProduct.productPrice;
-         aName.setText(Integer.toString(price));
+         aPrice.setText(Integer.toString(price) );
+
          System.out.println(price + "The price value \n");
 
-        //TODO: add a textbox or other thing to record the quantity
+        //TODO: add a textbox or other thing to record+ change the quantity
          // the a label values must be from the product information. -> change the "" part.
-         aQuantity  = new  JLabel("Quantity");
+         quant  = new  JTextField("Enter Quantity");
 
-
-            p6.setLayout(new GridLayout(8,1));
+            //TODO : Set the layout. 
+            p6.setLayout(new GridLayout(8,2));
         
             p6.add(pName);
             p6.add(aName);
@@ -71,13 +86,14 @@ private int price;
             p6.add(aPrice);
 
             p6.add(pQuantity);
-            p6.add(aQuantity);
+            p6.add(quant);
 
             p6.add(btnAddCart);
             p6.add(btnBuyNow);
+            p6.add(btnGoBack);
             btnAddCart.addActionListener(this);
             btnBuyNow.addActionListener(this);
-       
+            btnGoBack.addActionListener(this);
 
 
 
@@ -91,10 +107,19 @@ private int price;
     // things changing when clicked the button in this page. 
     public void actionPerformed(ActionEvent e){
 
+    //get the data from the ui and store it inside of the shopping cart. 
+    // we have three buttons here - > go back , add to cart , buy now. 
 
+    if( btnAddCart.equals(e.getSource())) {}
+    if( btnBuyNow.equals(e.getSource())) {}
 
+    if( btnGoBack.equals(e.getSource())) {
 
-
+        MainPage p = new MainPage();
+        p.setVisible(true);
+        this.setVisible(false);
+        
+    }
 
 
 
