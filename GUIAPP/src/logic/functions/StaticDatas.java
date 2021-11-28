@@ -10,6 +10,9 @@ import java.util.Scanner;
 
 public class StaticDatas {
 
+    // the User variable to check the current login user. 
+    public static User loginUser;
+
 
     // account related Arraylist
     public static ArrayList<User> users = new ArrayList<User>();
@@ -17,7 +20,12 @@ public class StaticDatas {
     // product related ArrayList
    public static ArrayList<Product> products  = new ArrayList<Product>();
 
+
+   // The search Results array
+   public static ArrayList<Product> searchResults  = new ArrayList<Product>();
+
     //OrderStack for the Owner to view. 
+
 
     // called when it init app
 public  static void  restoreUser(){
@@ -189,6 +197,7 @@ public static boolean login(String id ,String password){
 
     for (int i = 0;  i < users.size() ; i++){
         if( (users.get(i).id .equals(id)) && (users.get(i).password.equals(password))){
+            StaticDatas.loginUser = users.get(i);
             return true;
         }
     }

@@ -61,6 +61,7 @@ public void actionPerformed(ActionEvent e){
          System.out.println(txtId.getText() + "   " + txtPwd.getText());
         
          if(  StaticDatas.login(txtId.getText() , txtPwd.getText()) == true){
+           
             int reply = JOptionPane.showConfirmDialog(null, "Login Successful", "Alert", JOptionPane.OK_OPTION);
             MainPage p1 = new MainPage();
             p1.setVisible(true);

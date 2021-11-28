@@ -16,6 +16,9 @@ public class User {
 
     }
 
+// functions to update the user information?
+
+
     // constructor -> called when adding a new user. 
     public User(String userName , String id ,  String password ){
 
