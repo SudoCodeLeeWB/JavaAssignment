@@ -16,6 +16,7 @@ public class loginPage extends Gui1  {
 
 
      public loginPage(){
+      setTitle("Login Page");
 
         p5 = new JPanel();
         p5.setBounds(700,220, 525,664);

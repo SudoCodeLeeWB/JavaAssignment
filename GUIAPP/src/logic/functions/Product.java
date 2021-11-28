@@ -20,7 +20,8 @@ public String imagePath="lib/productImgs" , imageName;
         this.imageName = imageName;
     }
 
-
+    
+public Product(){}
 
 
 

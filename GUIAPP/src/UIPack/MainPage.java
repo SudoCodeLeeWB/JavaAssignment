@@ -7,11 +7,11 @@ import java.awt.*;
 
 public class MainPage extends Gui1 {
 
-
-    protected JPanel p5;
+    private JPanel p5;
     private ArrayList<JButton> buttons = new ArrayList<JButton>();
     
 public MainPage() {
+    setTitle("Main Page");
     System.out.println("main page!");
 
     p5 = new JPanel();
@@ -26,6 +26,7 @@ public MainPage() {
         buttons.add(i,new JButton());
         buttons.get(i).setText(StaticDatas.products.get(i).productName);
         p5.add(buttons.get(i));
+        buttons.get(i).addActionListener(this);
 
     }
 
@@ -41,6 +42,7 @@ public MainPage() {
         btnCustomer.setVisible(true);
         
  System.out.println("end of mainPage constructor ");
+ System.out.println("\n check the button on p5 status ");
 
 }
 
@@ -107,19 +109,23 @@ public MainPage() {
              p5.repaint();
         } 
     
-    
-        /* not working - please check
-        // if a specific product button is clicked : 
-        for (int i = 0; i< StaticDatas.products.size(); i++)
-        if (buttons.get(i).equals(e.getSource())){
-         System.out.println("\nThe product button is clicked");
-    
-
-        // insert the code for new page - product specific page. 
-            // make the ui first. 
         
+        // if a specific product button is clicked :  GO TO THE product specific page. 
+        for (int i = 0; i< buttons.size(); i++){
+            System.out.println("\n check the loop enter");
+            if (buttons.get(i).equals(e.getSource())){
+                System.out.println("\nThe product button is clicked");
+       
+               // insert the code for new page - product specific page. 
+                   // make the ui first. 
+                   ProductIntro productInt = new ProductIntro(buttons.get(i).getText());
+                   productInt.setVisible(true);
+                   this.setVisible(false);
+               }
         }
-        */
+
+
+    
 
 }
 

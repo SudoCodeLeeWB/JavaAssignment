@@ -131,7 +131,7 @@ public static void  restoreProduct(){
 public static void  saveUser (){
 
     FileWriter myWriter;
-    try {
+     try {
         myWriter = new FileWriter("lib/Users.txt"); 
 
         for (int i = 0;  i < users.size() ; i++){
@@ -204,4 +204,20 @@ public static boolean login(String id ,String password){
  return false;
 }
 
+
+public static Product productQuery(String name){
+
+    for(int i=0 ; i<products.size() ; i++){
+
+        if ( name.equals(products.get(i).productName)){
+
+            return products.get(i);
+
+        }
+
+    }
+
+return new Product();
+
+}
 }
