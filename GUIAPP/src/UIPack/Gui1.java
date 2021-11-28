@@ -1,6 +1,10 @@
 package UIPack;
 import javax.swing.*;
+
+import logic.functions.StaticDatas;
+
 import java.awt.*;
+import java.awt.event.*;  
 
 /*TODO : 
  adjust the location of search box in pannel  #4 
@@ -10,19 +14,23 @@ import java.awt.*;
 */
 
 
-public class Gui1 extends JFrame{
-  private JLabel lblLogo, lblWelcome, lblMyPage, lblShopCart, lblCustomer;
-  private ImageIcon imglogo;
+public class Gui1 extends JFrame implements ActionListener  {
+  protected JLabel lblLogo, lblWelcome;
+  protected JLabel lblUserName;
+  protected ImageIcon imglogo;
   // These buttons are not used -> chane it later?
-  // private JButton btnMypage, btnShopcart, btnCustomer;
-  private JPanel p1,p2,p3,p4;
+  protected JButton btnMypage, btnShopcart, btnCustomer;
+  protected JPanel p1,p2,p3,p4;
 
   // for pannel #3
-private JButton btnSide1 , btnSide2 , btnSide3 , btnSide4 ,btnSide5 ;
+public JButton btnSide1 , btnSide2 , btnSide3 , btnSide4 ,btnSide5 ;
 
 // for search box - pannel #4
-private JTextField searchBox;
-private JButton btnSearch;
+protected JTextField searchBox;
+protected JButton btnSearch;
+
+
+
 
 
 
@@ -32,17 +40,14 @@ private JButton btnSearch;
     setSize(1920,1080); // full size for 1080p
     imglogo = new ImageIcon("lib/logo.png"); //TODO :: add logo file here  + change the size of the image file
     lblLogo = new JLabel(imglogo);
-    
+   
+    // btns and lbls for panel 2
     lblWelcome = new JLabel("Welcome !");
-    lblMyPage = new JLabel("My Page");
-    lblShopCart = new JLabel("Shopping Cart");
-    lblCustomer = new JLabel("Customer");
+    lblUserName = new JLabel("");
+    btnMypage = new JButton("My Page");
+   btnShopcart = new JButton("Shopping cart");
+   btnCustomer = new JButton("Customer Service");
 
-
-    //TODO : need to add buttonsa inside of the pannel
-   // btnMypage = new JButton("My Page");
-   // btnShopcart = new JButton("Shopping cart");
-   // btnCustomer = new JButton("Customer Service");
 
    //btn for pannel #3
    btnSide1 = new JButton("Side1");
@@ -50,6 +55,15 @@ private JButton btnSearch;
    btnSide3 = new JButton("Side3");
    btnSide4 = new JButton("Side4");
    btnSide5 = new JButton("Side5");
+
+
+  // for the side button, 
+   btnSide1.setText("Recommended");
+   btnSide2.setText("Newly added");
+   btnSide3.setText("On Sale");
+   btnSide4.setText("top");
+   btnSide5.setText("pants");
+
 
    //textfield for pannel #4 :search box
    searchBox = new JTextField("Search Product" , 100);
@@ -72,12 +86,22 @@ private JButton btnSearch;
     p2 = new JPanel();
     p2.setBounds(1700,20,200,150);
     p2.setBackground(Color.cyan);
-    lblMyPage.setBounds(20, 100, 30,30);
 
-    p2.add(lblWelcome);
-    p2.add(lblMyPage);
-    p2.add(lblShopCart);
-    p2.add(lblCustomer);
+    p2.setLayout(new GridLayout(5,1));
+    p2.add(lblWelcome );
+    p2.add(lblUserName );
+    p2.add(btnMypage );
+    p2.add(btnShopcart );
+    p2.add(btnCustomer);
+
+    if(StaticDatas.loginUser == null){
+      btnMypage.setVisible(false);
+      btnShopcart.setVisible(false);
+      btnCustomer.setVisible(false);
+      
+    }
+
+
 
 
 
@@ -117,6 +141,16 @@ private JButton btnSearch;
     */
 
 
+// for action listener
+btnSide1.addActionListener(this);
+btnSide2.addActionListener(this);
+btnSide3.addActionListener(this);
+btnSide4.addActionListener(this);
+btnSide5.addActionListener(this);
+btnSearch.addActionListener(this);
+
+
+
     // adding pannel inside of the JFrame
     add(p1);
     add(p2);
@@ -129,5 +163,31 @@ private JButton btnSearch;
     setResizable(false);
 
   }
-  
+
+
+
+
+// write the events and actions . 
+public void actionPerformed(ActionEvent e){  
+ 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+}  
+
+
+
+
+  
+
