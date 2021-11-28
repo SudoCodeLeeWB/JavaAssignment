@@ -9,9 +9,10 @@ public class User {
 
     public String userName , id , password ;
     public  ShoppingCart cart; 
+    public String address;
 
 
-    public void setCart(){
+    private void setCart(){
         this. cart = new ShoppingCart();
 
     }
@@ -25,11 +26,15 @@ public class User {
         this.userName = userName;
         this.id = id;
         this.password = password;
+        setCart();
         // debug - show the user information. 
         System.out.println(userName + "  " + id + " " + password);
 
     }
 
+
+    // need a function to set a address. 
+    // need a function to change the informations. 
     
 
 

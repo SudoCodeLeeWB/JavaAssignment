@@ -1,5 +1,6 @@
 package UIPack;
 import javax.swing.*;
+import logic.functions.*;
 
 import logic.functions.Product;
 import logic.functions.StaticDatas;
@@ -9,13 +10,15 @@ import java.awt.event.*;
 public class ProductIntro extends Gui1{
 
 private JPanel p5 ,p6;
-private JButton btnAddCart , btnBuyNow, btnGoBack;
-private JLabel pName , pPrice , pQuantity ,image ; 
+private JButton btnAddCart , btnGoBack;
+private JLabel pName , pPrice , pQuantity ,image , lblChooseSize , lblASize; 
 private JLabel aName , aPrice ;
 private ImageIcon  bigImage;
 private int price;
 private JTextField quant;
-  
+private JButton btnSmall , btnMedium , btnLarge;
+private char size;
+private Product selectedProduct ;
 //resize the product image
 
     public ProductIntro(String selectedProductName){
@@ -32,8 +35,7 @@ private JTextField quant;
 
     
         // get the product from the 
-        Product selectedProduct = StaticDatas.productQuery(selectedProductName);
-
+        selectedProduct = StaticDatas.productQuery(selectedProductName);
 
         // adjust the size and change image inside of the pannel -5
         p5= new JPanel();
@@ -51,12 +53,18 @@ private JTextField quant;
         p6.setBackground(Color.yellow);
 
          btnAddCart = new JButton("ADD CART");
-         btnBuyNow = new JButton("Buy now");
          btnGoBack = new JButton("Go back");
+         btnSmall = new JButton("Small");
+         btnMedium = new JButton("Medium");
+         btnLarge = new JButton("Large");
+
+
 
          pName  = new JLabel("Product Name");
          pPrice  = new   JLabel("Product Price");
          pQuantity  = new  JLabel("Quantity");
+         lblChooseSize = new JLabel("Choose Size");
+         lblASize = new JLabel("size");
 
 
 
@@ -72,7 +80,7 @@ private JTextField quant;
 
          System.out.println(price + "The price value \n");
 
-        //TODO: add a textbox or other thing to record+ change the quantity
+        //TODO: change the layout .
          // the a label values must be from the product information. -> change the "" part.
          quant  = new  JTextField("Enter Quantity");
 
@@ -87,14 +95,21 @@ private JTextField quant;
 
             p6.add(pQuantity);
             p6.add(quant);
+            p6.add(lblChooseSize);
+            p6.add(lblASize);
 
             p6.add(btnAddCart);
-            p6.add(btnBuyNow);
             p6.add(btnGoBack);
-            btnAddCart.addActionListener(this);
-            btnBuyNow.addActionListener(this);
-            btnGoBack.addActionListener(this);
 
+            p6.add(btnSmall);
+            p6.add(btnMedium);
+            p6.add(btnLarge);
+
+            btnAddCart.addActionListener(this);
+            btnGoBack.addActionListener(this);
+            btnSmall.addActionListener(this);
+            btnMedium.addActionListener(this);
+            btnLarge.addActionListener(this);
 
 
         add(p5);
@@ -107,18 +122,44 @@ private JTextField quant;
     // things changing when clicked the button in this page. 
     public void actionPerformed(ActionEvent e){
 
+        //buttons for selecting the size of the product. 
+
+        if( btnSmall.equals(e.getSource())) {
+            size = 'S';
+            lblASize.setText("Small");
+        }
+
+        if( btnMedium.equals(e.getSource())) {
+            size = 'M';
+            lblASize.setText("Medieum");
+        }
+
+        if( btnLarge.equals(e.getSource())) {
+            size = 'L';
+            lblASize.setText("Large");
+        }
+
+
+
     //get the data from the ui and store it inside of the shopping cart. 
-    // we have three buttons here - > go back , add to cart , buy now. 
+    if( btnAddCart.equals(e.getSource())) {
 
-    if( btnAddCart.equals(e.getSource())) {}
-    if( btnBuyNow.equals(e.getSource())) {}
+        // getting the information from the ui and storing it into the Static cart. 
+            Order custOrder = new Order(selectedProduct , quant.getText() , size);
+            StaticDatas.loginUser.cart.addProduct(custOrder);
+            // showing that the order is added into the shopping cart. 
+            int reply = JOptionPane.showConfirmDialog(null, "Order Recorded", "Alert", JOptionPane.OK_OPTION);
 
+    }
+
+
+    // going back to the previous page. 
     if( btnGoBack.equals(e.getSource())) {
 
         MainPage p = new MainPage();
         p.setVisible(true);
         this.setVisible(false);
-        
+
     }
 
 
