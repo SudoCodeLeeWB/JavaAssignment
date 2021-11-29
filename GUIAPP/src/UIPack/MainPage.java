@@ -40,9 +40,16 @@ public MainPage() {
         btnMypage.setVisible(true);
         btnShopcart.setVisible(true);
         btnCustomer.setVisible(true);
+        btnLogOut.setVisible(true);
         
  System.out.println("end of mainPage constructor ");
  System.out.println("\n check the button on p5 status ");
+
+
+btnMypage.addActionListener(this);
+btnShopcart.addActionListener(this);
+btnCustomer.addActionListener(this);
+btnLogOut.addActionListener(this);
 
 }
 
@@ -128,8 +135,31 @@ public MainPage() {
                }
         }
 
+// button clicked for - p2 user informations
 
+
+if(btnMypage.equals(e.getSource())) {
+    // change the page to Mypage 
+    MyPage page = new MyPage();
+    page.setVisible(true);
+    this.setVisible(false);
     
+ }
+    
+//TODO : add LogOut button.
+if(btnLogOut.equals(e.getSource())){
+
+    // add saveProduct 
+    StaticDatas.saveUser();
+    StaticDatas.saveProduct();
+    StaticDatas.loginUser = null;
+    loginPage lp = new loginPage();
+    lp.setVisible(true);
+    this.setVisible(false);
+
+}
+
+
 
 }
 

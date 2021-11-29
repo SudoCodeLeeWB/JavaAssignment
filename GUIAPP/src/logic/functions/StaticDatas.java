@@ -25,8 +25,9 @@ public class StaticDatas {
    public static ArrayList<Product> searchResults  = new ArrayList<Product>();
 
     //OrderStack for the Owner to view. 
+    public static ArrayList<ShoppingCart> orderStack = new ArrayList<ShoppingCart>();
 
-
+    
     // called when it init app
 public  static void  restoreUser(){
         int i =1;
@@ -166,7 +167,8 @@ public static void  saveUser (){
                
 }
 
-public void  saveProduct(){}
+//TODO
+public static void  saveProduct(){}
 
 
 // called when registering a new user / adding new prduct
@@ -204,7 +206,6 @@ public static boolean login(String id ,String password){
  return false;
 }
 
-
 public static Product productQuery(String name){
 
     for(int i=0 ; i<products.size() ; i++){
@@ -220,4 +221,18 @@ public static Product productQuery(String name){
 return new Product();
 
 }
+
+
+public static  int findIdxOfUser(User user){
+    int answer= 0;
+        for(int i =0 ;  i < users.size() ; i++){
+            if ( users.get(i) == user){
+                answer = i;
+            }
+        }
+
+    return answer;
+}
+
+
 }
