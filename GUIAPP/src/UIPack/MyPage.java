@@ -10,6 +10,7 @@ import logic.functions.StaticDatas;
 
 public class MyPage extends Gui1{
 
+
     private JPanel panel;
     // side buttons are shopping cart , Customer service, mypage.
     private boolean adminUser = false;
@@ -31,7 +32,12 @@ public class MyPage extends Gui1{
 
     // for delete product. 
     private JPanel panel2;
-    
+    private JLabel lblProduct , lblPrices , lblSelect ,  lblSelectedProduct;
+    private ArrayList<JLabel> productNameLabels = new ArrayList<JLabel>();
+    private ArrayList<JLabel> productPriceLabels = new ArrayList<JLabel>();
+    private ArrayList<JButton> productButtonLabels = new ArrayList<JButton>();
+    private JButton btnErase;
+    private int selectedIdx;
 
 
     /*ScreenNumbers : 
@@ -77,12 +83,19 @@ public class MyPage extends Gui1{
 
 
         // #5 pannel - basic  pannel drawing. + for MyPage
+        panel2 = new JPanel();
+        panel2.setBounds(400  , 800 , 1450 ,  200);
+        panel2.setBackground(Color.gray);
+        panel2.setVisible(false);
+
          panel = new JPanel();
          panel.setBounds(400  , 185 , 1450 ,  800 );
          // goback button is for every panel. 
          btnGoBack = new JButton("Go Back");
          btnGoBack.addActionListener(this);
+
          add(panel);
+         add(panel2);
          drawMP();
 
 
@@ -94,6 +107,7 @@ public class MyPage extends Gui1{
 
 private void drawMP(){
 
+        panel2.setVisible(false);
     panel.removeAll(); // clear the panel
 
     panel.setBackground(Color.white);
@@ -180,8 +194,6 @@ private void  drawShopingCart(){
 
 }
 
-
-
 private void drawAddProduct(){
     
     
@@ -189,13 +201,6 @@ private void drawAddProduct(){
 
     panel.setBackground(Color.red);
     panel.setLayout(new GridLayout(5,3));
-
-    
-    
-
-
-
-
 
 
     panel.revalidate();
@@ -206,24 +211,54 @@ private void drawAddProduct(){
 }
 
 
-
-
 private void drawDeleteProduct(){
    
+    panel2.setVisible(true);
+
     panel.removeAll(); // clear the panel
+    panel2.removeAll(); // clear the panel
 
-    panel.setBackground(Color.red);
-    panel.setBounds(400  , 185 , 1450 ,  600);
-    panel.setLayout(new GridLayout(5,3));
+    panel.setBackground(Color.white);
+    panel.setBounds(200  , 185 , 1650 ,  600);
+    panel.setLayout(new GridLayout(StaticDatas.products.size()+1,3));
 
+    lblProduct = new JLabel("Product Name");
+    lblPrices = new JLabel("Price ");
+    lblSelect = new JLabel("Select");
+    lblSelectedProduct = new JLabel("");
+    btnErase = new JButton("Delete");
 
-    panel2 = new JPanel();
-    panel2.setBounds(400  , 800 , 1450 ,  200);
+    for (int i=0; i<StaticDatas.products.size(); i++){ 
+
+        productNameLabels.add(i,new JLabel());
+        productNameLabels.get(i).setText(StaticDatas.products.get(i).productName);
+        panel.add(productNameLabels.get(i));
+
+        productPriceLabels.add(i,new JLabel());
+        productPriceLabels.get(i).setText(Integer.toString(StaticDatas.products.get(i).productPrice));
+        panel.add(productPriceLabels.get(i));
+
+        productButtonLabels.add(i,new JButton());
+        productButtonLabels.get(i).setText(Integer.toString(i));
+        productButtonLabels.get(i).addActionListener(this);
+        panel.add( productButtonLabels.get(i));
+
+    }
+
 
     
+    // selected product -> when clicked? 
+    panel2.add(lblSelectedProduct);
+    panel2.add(btnErase);
+    panel2.add(btnGoBack);
+
       panel.revalidate();
       panel.repaint();
-      add(panel2);
+      panel2.revalidate();
+      panel2.repaint();
+      
+
+      btnErase.addActionListener(this); 
     
 
 }
@@ -263,21 +298,38 @@ public void actionPerformed(ActionEvent e){
             // btn for addProduct button
         }
 
-        
+
         if(btnSide3.equals(e.getSource())) {
              //btn for delete product button
             //show the list of the products and  delete it.
-
-
+            drawDeleteProduct();
         }
-
-
 
     }else if(adminUser == false){
 
         if(btnSide2.equals(e.getSource())) {
             drawShopingCart();
         }
+
+    }
+
+
+
+    for(int i =0; i < productButtonLabels.size(); i++){
+
+        if(productButtonLabels.get(i).equals(e.getSource())) {
+            lblSelectedProduct.setText(StaticDatas.products.get(i).productName);
+            selectedIdx = i;
+        }
+
+    }
+
+    if(btnErase.equals(e.getSource())) {
+
+        StaticDatas.products.remove(selectedIdx);
+        int reply = JOptionPane.showConfirmDialog(null, "Product Removed!", "Alert", JOptionPane.OK_OPTION);
+        //update the pannel
+        drawDeleteProduct();
 
     }
 

@@ -20,14 +20,13 @@ public class StaticDatas {
     // product related ArrayList
    public static ArrayList<Product> products  = new ArrayList<Product>();
 
-
    // The search Results array
    public static ArrayList<Product> searchResults  = new ArrayList<Product>();
 
-    //OrderStack for the Owner to view. 
+    //OrderStack for the Owner to view.  // not used!
     public static ArrayList<ShoppingCart> orderStack = new ArrayList<ShoppingCart>();
 
-    
+
     // called when it init app
 public  static void  restoreUser(){
         int i =1;
