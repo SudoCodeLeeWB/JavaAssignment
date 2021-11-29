@@ -17,7 +17,7 @@ private ImageIcon  bigImage;
 private int price;
 private JTextField quant;
 private JButton btnSmall , btnMedium , btnLarge;
-private char size;
+private String size;
 private Product selectedProduct ;
 //resize the product image
 
@@ -125,17 +125,17 @@ private Product selectedProduct ;
         //buttons for selecting the size of the product. 
 
         if( btnSmall.equals(e.getSource())) {
-            size = 'S';
+            size = "S";
             lblASize.setText("Small");
         }
 
         if( btnMedium.equals(e.getSource())) {
-            size = 'M';
+            size = "M";
             lblASize.setText("Medieum");
         }
 
         if( btnLarge.equals(e.getSource())) {
-            size = 'L';
+            size = "L";
             lblASize.setText("Large");
         }
 

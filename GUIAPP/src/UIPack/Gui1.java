@@ -19,7 +19,7 @@ public class Gui1 extends JFrame implements ActionListener  {
   protected JLabel lblUserName;
   protected ImageIcon imglogo;
   // These buttons are not used -> chane it later?
-  protected JButton btnMypage, btnShopcart, btnCustomer;
+  protected JButton btnMypage, btnShopcart, btnCustomer , btnLogOut;
   protected JPanel p1,p2,p3,p4;
 
   // for pannel #3
@@ -47,6 +47,7 @@ protected JButton btnSearch;
     btnMypage = new JButton("My Page");
    btnShopcart = new JButton("Shopping cart");
    btnCustomer = new JButton("Customer Service");
+   btnLogOut = new JButton("LogOut");
 
 
    //btn for pannel #3
@@ -93,17 +94,16 @@ protected JButton btnSearch;
     p2.add(btnMypage );
     p2.add(btnShopcart );
     p2.add(btnCustomer);
+    p2.add(btnLogOut);
 
+     
     if(StaticDatas.loginUser == null){
       btnMypage.setVisible(false);
       btnShopcart.setVisible(false);
       btnCustomer.setVisible(false);
+      btnLogOut.setVisible(false);
       
     }
-
-
-
-
 
 
     //pannel for  menu box (recommendation button() #3
