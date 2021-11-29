@@ -29,6 +29,8 @@ public class MyPage extends Gui1{
     private ArrayList<JLabel> pQuantity = new ArrayList<JLabel>();
     private ArrayList<JLabel> pTotalPrice = new ArrayList<JLabel>();
 
+    // for delete product. 
+    private JPanel panel2;
     
 
 
@@ -63,8 +65,7 @@ public class MyPage extends Gui1{
             btnSide2.setText("Add Product");
             btnSide3.setVisible(true);
             btnSide3.setText("Delete Product");
-            btnSide4.setVisible(true);
-            btnSide4.setText("view all Users");
+
 
         }
                 btnSide1.addActionListener(this);
@@ -179,25 +180,54 @@ private void  drawShopingCart(){
 
 }
 
-private void drawViewAllProduct(){
-   
+
+
+private void drawAddProduct(){
+    
+    
     panel.removeAll(); // clear the panel
 
     panel.setBackground(Color.red);
     panel.setLayout(new GridLayout(5,3));
 
     
+    
+
+
+
+
+
+
+    panel.revalidate();
+    panel.repaint();
+
+   
+
+}
+
+
+
+
+private void drawDeleteProduct(){
+   
+    panel.removeAll(); // clear the panel
+
+    panel.setBackground(Color.red);
+    panel.setBounds(400  , 185 , 1450 ,  600);
+    panel.setLayout(new GridLayout(5,3));
+
+
+    panel2 = new JPanel();
+    panel2.setBounds(400  , 800 , 1450 ,  200);
+
+    
       panel.revalidate();
       panel.repaint();
+      add(panel2);
     
 
 }
 
-private void drawViewAllOrders(){}
-
-private void drawViewAllUsers(){}
-
- 
 public void actionPerformed(ActionEvent e){  
  
 
@@ -230,16 +260,18 @@ public void actionPerformed(ActionEvent e){
     if (adminUser == true){
 
         if(btnSide2.equals(e.getSource())) {
-            drawViewAllProduct();
+            // btn for addProduct button
         }
 
+        
         if(btnSide3.equals(e.getSource())) {
-            drawViewAllOrders();
+             //btn for delete product button
+            //show the list of the products and  delete it.
+
+
         }
 
-        if(btnSide4.equals(e.getSource())) {
-            drawViewAllUsers();
-        }
+
 
     }else if(adminUser == false){
 
