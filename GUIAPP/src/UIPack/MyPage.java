@@ -46,7 +46,6 @@ public class MyPage extends Gui1{
 
         btnSide1.setVisible(true);
         btnSide2.setVisible(true);
-        btnSide3.setVisible(true);
         btnSide4.setVisible(false);
         btnSide5.setVisible(false);
         searchBox.setVisible(true);
@@ -54,14 +53,16 @@ public class MyPage extends Gui1{
     
         btnSide1.setText("My information");
         btnSide2.setText("My shopping cart");
+        btnSide3.setVisible(false);
 
 
         // check if the admin is login -> change the side menus. 
         if(StaticDatas.loginUser == StaticDatas.users.get(0)){
             adminUser = true;
             // when clicking the button Side 2 and 3 -> different panel drawing. 
-            btnSide2.setText("view all product");
-            btnSide3.setText("view all Orders");
+            btnSide2.setText("Add Product");
+            btnSide3.setVisible(true);
+            btnSide3.setText("Delete Product");
             btnSide4.setVisible(true);
             btnSide4.setText("view all Users");
 
@@ -123,15 +124,17 @@ private void drawMP(){
 
   panel.revalidate();
   panel.repaint();
-
+System.out.println(adminUser);
 
 }
 
 private void  drawShopingCart(){
     
+    System.out.println("Draw the shoppingCart Part");
+    
     panel.removeAll(); // clear the panel
     panel.setBackground(Color.white);
-    panel.setLayout(new GridLayout(5,5));
+    panel.setLayout(new GridLayout(StaticDatas.loginUser.cart.orderList.size()+1,5));
 
     lblProductName = new JLabel("Product Name");
     lblProductSize  = new JLabel("Product Size");
@@ -171,34 +174,22 @@ private void  drawShopingCart(){
             
         }
         
-
              panel.revalidate();
              panel.repaint();
 
 }
 
 private void drawViewAllProduct(){
-
    
     panel.removeAll(); // clear the panel
 
-    panel.setBackground(Color.white);
+    panel.setBackground(Color.red);
     panel.setLayout(new GridLayout(5,3));
-
-
-
-    
-
-
 
     
       panel.revalidate();
       panel.repaint();
-
-
-
-
-
+    
 
 }
 
@@ -231,11 +222,12 @@ public void actionPerformed(ActionEvent e){
 
     // add multiple conditions for the Admin 
     if(btnSide1.equals(e.getSource())) {
+        System.out.println("The drawMP func");
             drawMP();
     }
 
     // checkinng the admin user
-    if (adminUser = true){
+    if (adminUser == true){
 
         if(btnSide2.equals(e.getSource())) {
             drawViewAllProduct();
@@ -249,25 +241,13 @@ public void actionPerformed(ActionEvent e){
             drawViewAllUsers();
         }
 
-    }else if(adminUser = false){
+    }else if(adminUser == false){
 
         if(btnSide2.equals(e.getSource())) {
             drawShopingCart();
         }
 
-
     }
-
-
-        /*ScreenNumbers : 
-    0 : Main page - user information screen
-    1: User shopping cart
-    3 : View all product
-    4:  view all orders 
-    5: view all Users
-    */
-
-
 
 
 

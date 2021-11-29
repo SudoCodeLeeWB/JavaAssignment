@@ -17,7 +17,7 @@ private ImageIcon  bigImage;
 private int price;
 private JTextField quant;
 private JButton btnSmall , btnMedium , btnLarge;
-private String size;
+private String size= "S";
 private Product selectedProduct ;
 //resize the product image
 
@@ -82,7 +82,7 @@ private Product selectedProduct ;
 
         //TODO: change the layout .
          // the a label values must be from the product information. -> change the "" part.
-         quant  = new  JTextField("Enter Quantity");
+         quant  = new  JTextField("1");
 
             //TODO : Set the layout. 
             p6.setLayout(new GridLayout(8,2));
