@@ -94,7 +94,7 @@ public static void  restoreProduct(){
                     break;
 
                     case 2:
-                     productPrice = Integer.parseInt(myReader.nextLine());
+                     productPrice = Integer.valueOf(myReader.nextLine());
                     i++;
                     break;
                     
@@ -167,7 +167,49 @@ public static void  saveUser (){
 }
 
 //TODO
-public static void  saveProduct(){}
+public static void  saveProduct(){
+
+
+    FileWriter myWriter;
+     try {
+        myWriter = new FileWriter("lib/Products.txt"); 
+
+        for (int i = 0;  i < products.size() ; i++){
+            String ProductName = products.get(i).productName;
+            String KeyWord1 = products.get(i).keyword1;
+            String KeyWord2 = products.get(i).keyword2;
+            int price  = products.get(i).productPrice;
+            String imageName = products.get(i).imageName;
+
+            
+                myWriter.write(ProductName);
+                myWriter.write(System.getProperty( "line.separator" ));
+                myWriter.write(Integer.toString(price));
+                myWriter.write(System.getProperty( "line.separator" ));
+                myWriter.write(KeyWord1);
+                myWriter.write(System.getProperty( "line.separator" ));
+                myWriter.write(KeyWord2);
+                myWriter.write(System.getProperty( "line.separator" ));
+                myWriter.write(imageName);
+                myWriter.write(System.getProperty( "line.separator" ));
+
+                System.out.println("product Status recorded");
+        }
+
+            // for debug:
+            for (int k =0; k < users.size(); k++){
+            System.out.println(users.get(k));
+            }
+
+        myWriter.close();
+    }
+
+                 catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+               
+
+}
 
 
 // called when registering a new user / adding new prduct
@@ -188,11 +230,6 @@ for (int i = 0;  i < users.size() ; i++){
 }
 
 
-public boolean addProduct(){
-
-
-    return true;
-}    
 
 public static boolean login(String id ,String password){
 
@@ -220,7 +257,6 @@ public static Product productQuery(String name){
 return new Product();
 
 }
-
 
 public static  int findIdxOfUser(User user){
     int answer= 0;

@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.awt.*;
+
+import logic.functions.Product;
 import logic.functions.StaticDatas;
 
 public class MyPage extends Gui1{
@@ -29,6 +31,11 @@ public class MyPage extends Gui1{
     private ArrayList<JLabel> pPrices = new ArrayList<JLabel>();
     private ArrayList<JLabel> pQuantity = new ArrayList<JLabel>();
     private ArrayList<JLabel> pTotalPrice = new ArrayList<JLabel>();
+    
+    //for add product. - label add product : lblLAP
+    private JLabel lblAPName , lblAPKWord1 , lblAPKWord2 , lblAPPrice , lblAPIName;
+    private JTextField txtLAPName ,  txtLAPKword1 , txtLAPKword2 , txtLAPPrice , txtLAPIName;
+    private JButton btnAProduct;
 
     // for delete product. 
     private JPanel panel2;
@@ -196,16 +203,54 @@ private void  drawShopingCart(){
 
 private void drawAddProduct(){
     
-    
+    panel2.setVisible(true);
+    panel2.removeAll(); // clear the panel
     panel.removeAll(); // clear the panel
+    panel.setBounds(200  , 185 , 1650 ,  600);
 
-    panel.setBackground(Color.red);
-    panel.setLayout(new GridLayout(5,3));
+    // add the add product button on the pannel 2 .
 
+    panel.setBackground(Color.white);
+    panel2.setBackground(Color.gray);
+    panel.setLayout(new GridLayout(2,5));
+    
+
+    // add the adding image method here.
+    lblAPName  = new JLabel("Name");
+    lblAPKWord1 = new JLabel("Keyword1");
+    lblAPKWord2 = new JLabel("Keyword2");
+    lblAPPrice = new JLabel("Product Price");
+    //change this part to image
+    lblAPIName= new JLabel("image Name");
+    
+ 
+    txtLAPName = new JTextField("Enter new Name");   
+    txtLAPKword1  = new JTextField("Enter new Keyword1");   
+    txtLAPKword2  = new JTextField("Enter new Keyword2");   
+    txtLAPPrice  = new JTextField("Enter new Price");   
+    txtLAPIName= new JTextField("Enter Image name");   
+    
+    
+    btnAProduct = new JButton("Add new Product");
+    btnAProduct.addActionListener(this);
+
+    panel.add(  lblAPName);
+    panel.add(lblAPKWord1);
+    panel.add(lblAPKWord2 );
+    panel.add( lblAPPrice);
+    panel.add(lblAPIName);
+    panel.add( txtLAPName);
+    panel.add(txtLAPKword1);
+    panel.add(txtLAPKword2);
+    panel.add(txtLAPPrice );
+    panel.add(txtLAPIName);
+
+    panel2.add(btnAProduct);
 
     panel.revalidate();
     panel.repaint();
-
+    panel2.revalidate();
+    panel2.repaint();
    
 
 }
@@ -228,6 +273,12 @@ private void drawDeleteProduct(){
     lblSelectedProduct = new JLabel("");
     btnErase = new JButton("Delete");
 
+
+    panel.add(lblProduct);
+    panel.add(lblPrices);
+    panel.add(lblSelect);
+
+
     for (int i=0; i<StaticDatas.products.size(); i++){ 
 
         productNameLabels.add(i,new JLabel());
@@ -245,12 +296,15 @@ private void drawDeleteProduct(){
 
     }
 
-
+    btnErase.addActionListener(this); 
     
     // selected product -> when clicked? 
     panel2.add(lblSelectedProduct);
     panel2.add(btnErase);
     panel2.add(btnGoBack);
+    
+
+
 
       panel.revalidate();
       panel.repaint();
@@ -258,7 +312,7 @@ private void drawDeleteProduct(){
       panel2.repaint();
       
 
-      btnErase.addActionListener(this); 
+  
     
 
 }
@@ -295,7 +349,7 @@ public void actionPerformed(ActionEvent e){
     if (adminUser == true){
 
         if(btnSide2.equals(e.getSource())) {
-            // btn for addProduct button
+            drawAddProduct();
         }
 
 
@@ -332,6 +386,21 @@ public void actionPerformed(ActionEvent e){
         drawDeleteProduct();
 
     }
+
+
+
+// if the buttons for  add product is clicked
+
+
+if(btnAProduct.equals(e.getSource())) {
+    Product newProduct = new Product(txtLAPName.getText(),txtLAPKword1.getText(),txtLAPKword2.getText() , Integer.valueOf(txtLAPPrice.getText() ) ,txtLAPIName.getText() );
+    StaticDatas.products.add(newProduct);
+    int reply = JOptionPane.showConfirmDialog(null, "Product Added!", "Alert", JOptionPane.OK_OPTION);
+    drawAddProduct();
+
+}
+
+
 
 
 
