@@ -29,8 +29,30 @@ public JButton btnSide1 , btnSide2 , btnSide3 , btnSide4 ,btnSide5 ;
 protected JTextField searchBox;
 protected JButton btnSearch;
 
+//method background colour for p1
+public static Color YELLOWBACKGROUND() {
+	return new Color(252,231,98);
+}
 
+//method background colour for p2
+public static Color WHITISH() {
+	return new Color(255,253,237);
+}
 
+//method background colour for p3
+public static Color ORANGE() {
+	return new Color(255, 177, 122);
+}
+
+//method background colour for p4
+public static Color PURPLISH() {
+	return new Color(79, 71, 137);
+}
+
+//method background colour for p5
+public static Color DARKPURPLE() {
+	return new Color(32, 19, 53);
+}
 
 
 
@@ -79,14 +101,14 @@ protected JButton btnSearch;
     // : adjust the size of a image 
     p1 = new JPanel();
     p1.setBounds(20,20,150,150);
-    p1.setBackground(Color.RED);
+    p1.setBackground(YELLOWBACKGROUND());
     p1.add(lblLogo);
 
 
     // pannel for user info #2
     p2 = new JPanel();
     p2.setBounds(1700,20,200,150);
-    p2.setBackground(Color.cyan);
+    p2.setBackground(WHITISH());
 
     p2.setLayout(new GridLayout(5,1));
     p2.add(lblWelcome );
@@ -117,7 +139,7 @@ protected JButton btnSearch;
     p3.add(btnSide4);
     p3.add(btnSide5);
 
-    p3.setBackground(Color.yellow); // for checking the area of the panel
+    p3.setBackground(ORANGE()); // for checking the area of the panel
     
 
 
@@ -125,7 +147,7 @@ protected JButton btnSearch;
 
     p4 = new JPanel();
     p4.setBounds(180,20,1500,150);
-    p4.setBackground(Color.green);
+    p4.setBackground(PURPLISH());
 
     p4.setLayout(new FlowLayout());
     p4.add(searchBox);

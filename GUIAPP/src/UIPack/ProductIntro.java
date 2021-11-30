@@ -40,7 +40,7 @@ private Product selectedProduct ;
         // adjust the size and change image inside of the pannel -5
         p5= new JPanel();
         p5.setBounds(180  , 185 , 1300 ,  800 );
-        p5.setBackground(Color.blue);
+        p5.setBackground(DARKPURPLE());
         bigImage = new ImageIcon(""); //TODO : get the image file from the database.  // from the image icon!
         image = new JLabel(bigImage);
         p5.add(image);

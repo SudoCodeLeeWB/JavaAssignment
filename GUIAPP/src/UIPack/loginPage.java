@@ -20,7 +20,7 @@ public class loginPage extends Gui1  {
 
         p5 = new JPanel();
         p5.setBounds(700,220, 525,664);
-        p5.setBackground(Color.white);
+        p5.setBackground(DARKPURPLE());
         btnLogin = new JButton("Login");
         btnRegister = new JButton("Register");
         logoImg = new ImageIcon("lib/logo.png");
