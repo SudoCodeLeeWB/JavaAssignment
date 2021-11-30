@@ -100,6 +100,10 @@ public class MyPage extends Gui1{
          // goback button is for every panel. 
          btnGoBack = new JButton("Go Back");
          btnGoBack.addActionListener(this);
+         btnErase = new JButton("Delete");
+         btnErase.addActionListener(this); 
+         btnAProduct = new JButton("Add new Product");
+         btnAProduct.addActionListener(this);
 
          add(panel);
          add(panel2);
@@ -231,8 +235,6 @@ private void drawAddProduct(){
     txtLAPIName= new JTextField("Enter Image name");   
     
     
-    btnAProduct = new JButton("Add new Product");
-    btnAProduct.addActionListener(this);
 
     panel.add(  lblAPName);
     panel.add(lblAPKWord1);
@@ -271,7 +273,7 @@ private void drawDeleteProduct(){
     lblPrices = new JLabel("Price ");
     lblSelect = new JLabel("Select");
     lblSelectedProduct = new JLabel("");
-    btnErase = new JButton("Delete");
+
 
 
     panel.add(lblProduct);
@@ -296,7 +298,7 @@ private void drawDeleteProduct(){
 
     }
 
-    btnErase.addActionListener(this); 
+
     
     // selected product -> when clicked? 
     panel2.add(lblSelectedProduct);
@@ -304,16 +306,11 @@ private void drawDeleteProduct(){
     panel2.add(btnGoBack);
     
 
-
-
       panel.revalidate();
       panel.repaint();
       panel2.revalidate();
       panel2.repaint();
       
-
-  
-    
 
 }
 
