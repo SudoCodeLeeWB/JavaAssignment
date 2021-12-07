@@ -99,17 +99,17 @@ public static void  restoreProduct(){
                     break;
                     
                     case 3:
-                     imageName = myReader.nextLine();
+                     keyword1= myReader.nextLine();
                     i++;
                     break;
 
                      case 4:
-                      keyword1 = myReader.nextLine();
+                      keyword2 = myReader.nextLine();
                      i++;
                      break;
   
                     case 5:
-                     keyword2 = myReader.nextLine();
+                     imageName= myReader.nextLine();
                      Product newProduct = new Product(productName,keyword1,keyword2 , productPrice , imageName);
                      products.add(newProduct);
                      i =1;

@@ -7,7 +7,7 @@ public class Product {
     
 public String productName , keyword1 =""  , keyword2 =""  ;
 public int productPrice;
-public String imagePath="lib/productImgs" , imageName;
+public String  imageName;
 
 
 // adding the image?

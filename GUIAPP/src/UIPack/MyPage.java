@@ -1,14 +1,14 @@
 package UIPack;
 
 import javax.swing.*;
-
-
 import java.awt.event.*;
+import java.nio.file.*;
 import java.util.ArrayList;
 import java.awt.*;
-
 import logic.functions.Product;
 import logic.functions.StaticDatas;
+import java.io.File;
+import java.io.IOException;
 
 public class MyPage extends Gui1{
 
@@ -35,7 +35,7 @@ public class MyPage extends Gui1{
     //for add product. - label add product : lblLAP
     private JLabel lblAPName , lblAPKWord1 , lblAPKWord2 , lblAPPrice , lblAPIName;
     private JTextField txtLAPName ,  txtLAPKword1 , txtLAPKword2 , txtLAPPrice , txtLAPIName;
-    private JButton btnAProduct;
+    private JButton btnAProduct , btnAddImage;
 
     // for delete product. 
     private JPanel panel2;
@@ -46,6 +46,8 @@ public class MyPage extends Gui1{
     private JButton btnErase;
     private int selectedIdx;
 
+private File file;
+private Path temp;
 
     /*ScreenNumbers : 
     0 : Main page - user information screen
@@ -91,7 +93,7 @@ public class MyPage extends Gui1{
 
         // #5 pannel - basic  pannel drawing. + for MyPage
         panel2 = new JPanel();
-        panel2.setBounds(400  , 800 , 1450 ,  200);
+        panel2.setBounds(200  , 800 , 1650 ,  200);
         panel2.setBackground(Color.gray);
         panel2.setVisible(false);
 
@@ -104,7 +106,10 @@ public class MyPage extends Gui1{
          btnErase.addActionListener(this); 
          btnAProduct = new JButton("Add new Product");
          btnAProduct.addActionListener(this);
+         btnAddImage = new JButton("Add Image");
+         btnAddImage.addActionListener(this);
 
+         txtLAPIName= new JTextField("");   
          add(panel);
          add(panel2);
          drawMP();
@@ -232,7 +237,7 @@ private void drawAddProduct(){
     txtLAPKword1  = new JTextField("Enter new Keyword1");   
     txtLAPKword2  = new JTextField("Enter new Keyword2");   
     txtLAPPrice  = new JTextField("Enter new Price");   
-    txtLAPIName= new JTextField("Enter Image name");   
+  
     
     
 
@@ -247,7 +252,10 @@ private void drawAddProduct(){
     panel.add(txtLAPPrice );
     panel.add(txtLAPIName);
 
+    panel2.add(btnAddImage);
     panel2.add(btnAProduct);
+   
+
 
     panel.revalidate();
     panel.repaint();
@@ -393,18 +401,50 @@ if(btnAProduct.equals(e.getSource())) {
     Product newProduct = new Product(txtLAPName.getText(),txtLAPKword1.getText(),txtLAPKword2.getText() , Integer.valueOf(txtLAPPrice.getText() ) ,txtLAPIName.getText() );
     StaticDatas.products.add(newProduct);
     int reply = JOptionPane.showConfirmDialog(null, "Product Added!", "Alert", JOptionPane.OK_OPTION);
+
+
+    //moving the file to the productImage file
+    //TODO:
+
+    try {
+        Files.move (Paths.get(temp.toString()), Paths.get("lib/productImgs/"+txtLAPIName.getText()), StandardCopyOption.REPLACE_EXISTING);
+    } catch (IOException e1) {
+        e1.printStackTrace();
+        System.out.println("Error : the image is not moved ");
+    }
+
     drawAddProduct();
 
 }
 
+if(btnAddImage.equals(e.getSource())) {
 
 
+    // from geeksforgeeks --------------------------------------------------------------------------- adding a JFILECHOOSER
+   
+        // create an object of JFileChooser class
+        JFileChooser j = new JFileChooser();
 
+        //select file to open
+       int response =  j.showOpenDialog(null);
+
+
+        if (response == JFileChooser.APPROVE_OPTION) {
+            // set the label to the path of the selected directory
+            file = new File(j.getSelectedFile().getAbsolutePath());
+            txtLAPIName.setText(file.getName());
+
+            temp = Paths.get( file.getAbsolutePath());
+            System.out.println(temp.toString());
+        }
+ 
+
+}
 
 }
 
 
-
+// after moving the image from one page to another -> call the images from the file 
 
 
 

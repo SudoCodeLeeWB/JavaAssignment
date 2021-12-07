@@ -29,7 +29,6 @@ public MainPage() {
         buttons.get(i).addActionListener(this);
 
     }
-
     
     add(p5);
 

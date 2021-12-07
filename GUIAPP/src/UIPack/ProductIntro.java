@@ -1,4 +1,5 @@
 package UIPack;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import logic.functions.*;
 
@@ -6,19 +7,23 @@ import logic.functions.Product;
 import logic.functions.StaticDatas;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class ProductIntro extends Gui1{
 
 private JPanel p5 ,p6;
 private JButton btnAddCart , btnGoBack;
-private JLabel pName , pPrice , pQuantity ,image , lblChooseSize , lblASize; 
+private JLabel pName , pPrice , pQuantity , lblChooseSize , lblASize; 
 private JLabel aName , aPrice ;
-private ImageIcon  bigImage;
+
 private int price;
 private JTextField quant;
 private JButton btnSmall , btnMedium , btnLarge;
 private String size= "S";
 private Product selectedProduct ;
+
 //resize the product image
 
     public ProductIntro(String selectedProductName){
@@ -41,11 +46,22 @@ private Product selectedProduct ;
         p5= new JPanel();
         p5.setBounds(180  , 185 , 1300 ,  800 );
         p5.setBackground(DARKPURPLE());
-        bigImage = new ImageIcon(""); //TODO : get the image file from the database.  // from the image icon!
-        image = new JLabel(bigImage);
-        p5.add(image);
 
-    
+ //TODO : get the image file from the database.  // from the image icon! // adjust the size of a image. 
+
+        BufferedImage myPicture;
+        try {
+           myPicture = ImageIO.read(new File("lib/productimgs/"+selectedProduct.imageName )); 
+           // myPicture.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+            JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+            p5.setLayout(new BorderLayout());
+            p5.add(picLabel , BorderLayout.CENTER);
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+            
 
         // layout the buttons and labels. - p6
         p6= new JPanel();
@@ -83,6 +99,10 @@ private Product selectedProduct ;
         //TODO: change the layout .
          // the a label values must be from the product information. -> change the "" part.
          quant  = new  JTextField("1");
+
+
+
+
 
             //TODO : Set the layout. 
             p6.setLayout(new GridLayout(8,2));
