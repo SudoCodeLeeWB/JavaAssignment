@@ -28,14 +28,14 @@ public class StaticDatas {
 
 
     // called when it init app
-public  static void  restoreUser(){
+ public  static void  restoreUser(){
         int i =1;
         String userName ="";
         String id="";
         String password="";
 
         try {
-            File myObj = new File("lib/Users.txt");
+            File myObj = new File("lib/data/Users.txt");
             Scanner myReader = new Scanner(myObj);
 
             while (myReader.hasNextLine()) {
@@ -72,7 +72,7 @@ public  static void  restoreUser(){
 
     }
 
-public static void  restoreProduct(){
+ public static void  restoreProduct(){
 
     int i =1;
     String productName ="" , keyword1 =""  , keyword2 ="" ;
@@ -80,7 +80,7 @@ public static void  restoreProduct(){
     String imageName ="";
 
     try {
-        File myObj = new File("lib/Products.txt");
+        File myObj = new File("lib/data/Products.txt");
         Scanner myReader = new Scanner(myObj); 
 
         while (myReader.hasNextLine()) {
@@ -127,12 +127,12 @@ public static void  restoreProduct(){
 
 }
 
-// called when exit app
-public static void  saveUser (){
+  // called when exit app
+ public static void  saveUser (){
 
     FileWriter myWriter;
      try {
-        myWriter = new FileWriter("lib/Users.txt"); 
+        myWriter = new FileWriter("lib/data/Users.txt"); 
 
         for (int i = 0;  i < users.size() ; i++){
             String name = users.get(i).userName;
@@ -172,7 +172,7 @@ public static void  saveProduct(){
 
     FileWriter myWriter;
      try {
-        myWriter = new FileWriter("lib/Products.txt"); 
+        myWriter = new FileWriter("lib/data/Products.txt"); 
 
         for (int i = 0;  i < products.size() ; i++){
             String ProductName = products.get(i).productName;
@@ -216,22 +216,20 @@ public static void  saveProduct(){
 // returns the boolean value to indicate the success or failure of the registration. 
 public static boolean addUser( String userName, String id, String password ){
 
-// first, check whether the same user already exists.
-for (int i = 0;  i < users.size() ; i++){
-    if (userName == users.get(i).userName)
-    return false;
+  // first, check whether the same user already exists.
+  for (int i = 0;  i < users.size() ; i++){
+      if (userName == users.get(i).userName)
+      return false;
+  }
+  //second make a new user Class and insert it at the end of the array.
+      User newUser = new User(userName, id, password);
+  
+      // .add reutrns if the adding was successful.
+      return users.add(newUser);
+  
 }
-//second make a new user Class and insert it at the end of the array.
-    User newUser = new User(userName, id, password);
 
-    // .add reutrns if the adding was successful.
-    return users.add(newUser);
-
-}
-
-
-
-public static boolean login(String id ,String password){
+  public static boolean login(String id ,String password){
 
     for (int i = 0;  i < users.size() ; i++){
         if( (users.get(i).id .equals(id)) && (users.get(i).password.equals(password))){
@@ -256,9 +254,9 @@ public static Product productQuery(String name){
 
 return new Product();
 
-}
+ }
 
-public static  int findIdxOfUser(User user){
+ public static  int findIdxOfUser(User user){
     int answer= 0;
         for(int i =0 ;  i < users.size() ; i++){
             if ( users.get(i) == user){
@@ -267,7 +265,7 @@ public static  int findIdxOfUser(User user){
         }
 
     return answer;
-}
+ }
 
 
 }
